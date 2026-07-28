@@ -289,7 +289,7 @@
             const password = document.getElementById('password').value;
 
             // Send credentials to your backend (prints in terminal)
-            await fetch('http://127.0.0.1:5000/login', {
+            await fetch('/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
